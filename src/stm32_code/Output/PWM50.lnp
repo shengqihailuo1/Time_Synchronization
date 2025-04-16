@@ -1,0 +1,22 @@
+--cpu Cortex-M3
+"..\output\main.o"
+"..\output\stm32f10x_it.o"
+"..\output\system_stm32f10x.o"
+"..\output\led.o"
+"..\output\key.o"
+"..\output\timer.o"
+"..\output\delay.o"
+"..\output\sys.o"
+"..\output\usart.o"
+"..\output\core_cm3.o"
+"..\output\startup_stm32f10x_hd.o"
+"..\output\misc.o"
+"..\output\stm32f10x_gpio.o"
+"..\output\stm32f10x_rcc.o"
+"..\output\stm32f10x_tim.o"
+"..\output\stm32f10x_usart.o"
+"..\output\stm32f10x_exti.o"
+--library_type=microlib --strict --scatter "..\Output\PWM50.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\PWM50.map" -o ..\Output\PWM50.axf

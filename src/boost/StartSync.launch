@@ -1,0 +1,11 @@
+<launch>
+    <!-- 启动 livox_ros_driver 节点 -->
+    <include file="$(find livox_ros_driver)/launch/livox_lidar.launch" />
+
+    <!-- 启动 mvs_ros_pkg 节点 -->
+    <include file="$(find mvs_ros_pkg)/launch/mvs_camera_trigger.launch" />
+
+    <!-- 启动 sync_camera_lidar 节点 -->
+    <node pkg="sync_camera_lidar" type="sync_camera_lidar_node" name="sync_camera_lidar_node" />
+</launch>
+

@@ -1,0 +1,50 @@
+%YAML:1.0
+
+#--------------------------------------------------------------------------------------------
+# Camera Parameters. Adjust them!
+#--------------------------------------------------------------------------------------------
+
+SerialNumber: "00DA0878853" # "00G66398256" # "00G79916803" #我的相机是 00DA0878853
+CameraName: "left"
+TopicName: "left_camera/image"
+
+# ExposureAuto（自动曝光）： 0 代表 Off（即使用固定曝光时间）, 1 代表 Once（没用）, 2 代表 Continues（用的是这个）
+
+#（1）固定曝光这样设置：
+# ExposureAuto: 0  #固定曝光 （要设置固定的时间）                                                                                                                                                                                                                                                                                                                                                                                                                    
+# ExposureAutoMode: 0  #设置和ExposureAuto一样即可
+# ExposureTime: 100000 #20000 固定曝光时间
+# 
+#（2）自动连续曝光这样设置：
+# ExposureAuto: 2 #自动连续曝光(自动就要设最高最低时间)
+# ExposureAutoMode: 2  #设置和ExposureAuto一样即可
+# AutoExposureTimeLower: 100
+# AutoExposureTimeUpper: 20000 #10000
+
+ExposureAuto: 0
+ExposureTime: 20000 # min: 15  max: 9999500
+
+
+resize_divide: 0.5 #从相机获取一帧图像数据后，用resize_divider缩放因子对图像宽高进行调整
+
+
+CenterAlign: 1 #是否设置中心对齐   1是   0否
+
+
+# GainAuto, 0 代表 Off, 1 代表 Once, 2 代表 Continues
+GainAuto: 2
+#如果GainAuto为0（即关闭自动增益），就要手动设置Gain固定值
+Gain: 15 # min: 0   max: 17.0166
+
+
+# GammaEnable: 1
+Gamma: 0.7 # min: 0   max: 17.0166
+GammaSelector: 1 # 0 代表 user, 1 代表 sRGB, 2 代表 Off
+
+
+
+ #估计：里面存放LiDAR的帧头时间戳
+#path_for_time_stamp: "/home/aa/timeshare"  #原来的
+#path_for_time_stamp: "/home/sqhl/Desktops/fast_livo_catkin_ws/src/time_stamp_file.txt"
+path_for_time_stamp: "/home/sqhl/Desktops/fast_livo_catkin_ws/src/time_stamp_file"
+#上面的路径： 见 https://zhuanlan.zhihu.com/p/670136001 ： “通过共享内存将LiDAR的帧头时间戳赋给相机消息”

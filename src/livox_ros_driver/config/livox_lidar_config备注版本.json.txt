@@ -1,0 +1,85 @@
+{
+    "lidar_config": [
+        {
+            "broadcast_code": "3JEDK3U0014C561",
+            "enable_connect": false,//为true时，才会把这个广播码添加到白名单里面。
+            "return_mode": 0,
+            "coordinate": 0,
+
+            "imu_rate": 1,//Push frequency of IMU sensor data 是否发布imu话题。
+//0 -- stop push
+//1 -- 200 Hz
+//Others -- undefined, it will cause unpredictable behavior
+//Currently only Horizon supports this, MID serials do not support it
+
+            "extrinsic_parameter_source": 0,
+            "enable_high_sensitivity": false
+        },
+        {
+            "broadcast_code": "0TFDG3U99101431",
+            "enable_connect": false,
+            "return_mode": 0,
+            "coordinate": 0,
+            "imu_rate": 0,
+            "extrinsic_parameter_source": 0,
+            "enable_high_sensitivity": false
+        }
+    ],
+    "timesync_config": {
+        "enable_timesync": true,
+        
+        
+        "device_name": "/dev/ttyUSB0",
+        
+
+        
+        
+        "comm_device_type": 0,//0是kCommDevUart，我们用网线，估计要换成3（kCommDevEthernet）//Device type not supported, now only uart is supported!
+	/** Communication device type define  通信设备类型定义 */
+	enum CommDeviceType {
+	  kCommDevUart,
+	  kCommDevUsb,
+	  kCommDevCan,
+	  kCommDevEthernet,
+	  kCommDevUndef
+	};
+
+
+        "baudrate_index": 2,
+        索引:
+enum BaudRate {
+  BR2400,
+  BR4800,
+  BR9600,
+  BR19200,
+  BR38400,
+  BR57600,
+  BR115200,
+  BR230400,
+  BR460800,
+  BR500000,
+  BR576000,
+  BR921600,
+  BR1152000,
+  BR1500000,
+  BR2000000,
+  BR2500000,
+  BR3000000,
+  BR3500000,
+  BR4000000,
+  BRUnkown,
+};
+        
+        
+        "parity_index": 0
+        索引:
+        enum Parity {
+  P_8N1, /* No parity (8N1)	*/
+  P_7E1, /* Even parity (7E1)*/
+  P_7O1, /* Odd parity (7O1)	*/
+  P_7S1, /* Space parity is setup the same as no parity (7S1)	*/
+  ParityUnkown
+};
+
+    }
+}
