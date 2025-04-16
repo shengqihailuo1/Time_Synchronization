@@ -631,8 +631,9 @@ https://github.com/TurtleZhong/Visual-Inertial-Synchronization-Hardware
 
 - 函数对齐策略2：message_filters::sync_policies::ApproximateTime（寻找最接近的时间帧做同步）
 
+根据消息的时间戳,使用自适应算法 匹配消息。如下图，时间从左到右，每一行都是一个话题，每一个点都是一条信息。红色的信息是支点，虚线将这些信息对齐在一起。
 
-根据消息的时间戳,使用自适应算法(http://wiki.ros.org/message_filters/ApproximateTime)匹配消息。如下图，时间从左到右，每一行都是一个话题，每一个点都是一条信息。红色的信息是支点，虚线将这些信息对齐在一起。
+参考： http://wiki.ros.org/message_filters/ApproximateTime 
 
 <img src="assets/image-20240306160752520.png" alt="image-20240306160752520" style="zoom:50%;" />
 
