@@ -17,7 +17,7 @@
 - [Camera/Lidar硬件时间同步](#camera/lidar硬件时间同步)
   * [接线方式](#接线方式)
     + [camera接线](#camera接线)
-    + [Livox avia接线](#livox avia接线)
+    + [Livox avia接线](#livox-avia接线)
   * [同步方案一](#同步方案一)
   * [同步方案二](#同步方案二)
     + [MCU程序部分](#mcu程序部分)
