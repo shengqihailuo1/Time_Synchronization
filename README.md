@@ -1,14 +1,40 @@
+# 目录
+
 - [运行](#运行)
 - [系统整体框架图](#系统整体框架图)
 - [硬件接线图](#硬件接线图)
 - [Livox avia](#livox-avia)
   * [采集数据](#采集数据)
-
-
-
-456
-
-5282
+  * [时间软同步](#时间软同步)
+    + [PTP方法](#ptp方法)
+    + [GPS方法](#GPS方法)
+- [D455相机](#D455相机)
+    + [启动方法](#启动方法)
+    + [IMU陀螺仪/加速度计同步](#imu陀螺仪/加速度计同步)
+- [海康相机](#海康相机)
+  * [启动方法](#启动方法)
+  * [相机触发](#相机触发)
+- [Camera/Lidar硬件时间同步](#camera/lidar硬件时间同步)
+  * [接线方式](#接线方式)
+    + [camera接线](#camera接线)
+    + [Livox avia接线](#livox avia接线)
+  * [同步方案一](#同步方案一)
+  * [同步方案二](#同步方案二)
+    + [MCU程序部分](#mcu程序部分)
+    + [Livox驱动部分](#livox驱动部分)
+    + [Camera驱动部分](#camera驱动部分)
+    + [按时间最近邻做帧对齐](#按时间最近邻做帧对齐)
+    + [触发信号的时序问题](#触发信号的时序问题)
+    + [设置相机采样频率可控](#设置相机采样频率可控)
+    + [测量同步误差](#测量同步误差)
+      - [kalibr标定相机内参](#kalibr标定相机内参)
+      - [标定imu噪声](#标定imu噪声)
+      - [联合标定相机和imu](#联合标定相机和imu)
+    + [时间戳回退问题](#时间戳回退问题)
+  * [同步方案三](#同步方案三)
+      - [kalibr标定方案三精度](#kalibr标定方案三精度)
+      - [open-vins标定方案三精度](#open-vins标定方案三精度)
+- [总结](#总结)
 
 
 
@@ -153,7 +179,7 @@ https://github.com/BingqiangZhou/LearningSLAM_ROS/blob/main/Files/LivoxLiadarImu
 
 # D455相机
 
-### 启动方法
+## 启动方法
 
 - 方法一：使用自带软件查看
 
@@ -196,7 +222,7 @@ roslaunch realsense2_camera rs_camera.launch filters:=pointcloud enable_gyro:=tr
 
 <img src="assets/image-20240117095648724.png" alt="image-20240117095648724" style="zoom: 50%;" />
 
-### IMU陀螺仪/加速度计同步
+## IMU陀螺仪/加速度计同步
 
 参考：https://blog.csdn.net/weixin_50508111/article/details/123915215
 
