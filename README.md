@@ -1,9 +1,6 @@
-**项目背景与目标**：在多传感器融合应用中，不同传感器采样频率各异，为使数据有效融合，需精确同步时间。本项目致力于实现 Livox 激光雷达与海康相机的时间同步，提升数据匹配精度。
-
-项目实现效果：
-
 # 目录
 
+- [项目背景与目标](#项目背景与目标)
 - [运行](#运行)
 - [系统整体框架图](#系统整体框架图)
 - [硬件接线图](#硬件接线图)
@@ -42,6 +39,12 @@
 
 
 
+# 项目背景与目标
+
+在多传感器融合应用中，因各传感器采样频率与时间特性不同，严重影响数据协同与深度融合。**本项目聚焦 Livox  激光雷达与海康相机的时间同步难题，通过创新软硬件协同设计与算法优化，突破传感器间的时间壁垒，实现多源数据在时间轴精准对齐，为多传感器融合系统奠定时间基础**。有效提升系统在自动驾驶、机器人导航等复杂场景下的感知精度与可靠性。
+
+
+
 # 运行
 
 ```
@@ -64,11 +67,11 @@ rosrun sync_camera_lidar sync_camera_lidar_node
 
 ![image-20250416181114736](./assets/image-20250416181114736.png)
 
+
+
 # 硬件接线图
 
 ![image-20240306212716658](./assets/image-20240306212716658.png)
-
-
 
 
 
@@ -138,12 +141,6 @@ https://github.com/Livox-SDK/Livox-SDK/wiki/livox-device-time-synchronization-ma
 
 https://livox-wiki-cn.readthedocs.io/zh-cn/latest/tutorials/other_product/timestamp_sychronization.html#livox
 
-https://github.com/Livox-SDK/Livox-SDK/wiki/Livox-SDK-Communication-Protocol-Cn
-
-https://livox-wiki-cn.readthedocs.io/zh-cn/latest/tutorials/new_product/common/time_sync.html
-
-https://github.com/BingqiangZhou/LearningSLAM_ROS/blob/main/Files/LivoxLiadarImu_TimeSync.md
-
 ![image-20250416112818964](./assets/image-20250416112818964.png)
 
 ### PTP方法
@@ -180,6 +177,8 @@ https://github.com/BingqiangZhou/LearningSLAM_ROS/blob/main/Files/LivoxLiadarImu
 系统中实际使用的传感器具有不同的采样频率。其中，IMU的采样频率为 100Hz，相机的采样频率为 30Hz，毫米波雷达的采样频率为 20Hz。为了让多传感器的数据能够在时间轴上对应，并且保证每一次匹配的数据在时间戳上能尽可能接近对齐，可以采用毫米波雷达采样时间戳为基准，使用ROS信息收发缓存队列缓存图像数据以及IMU数据，在每一帧毫米波雷达数据取得时，对比缓存队列中的数据时间戳以及下一帧的数据时间戳，取距离毫米波雷达数据时间戳最近的图像数据与IMU数据。如图所示，毫米波雷达时间帧与IMU重合，相机取与该时间帧相邻数据中离采样时间最近的一帧数据，最终取得数据为蓝色方框内数据。
 
 ![image-20250416113255020](./assets/image-20250416113255020.png)
+
+
 
 # D455相机
 
